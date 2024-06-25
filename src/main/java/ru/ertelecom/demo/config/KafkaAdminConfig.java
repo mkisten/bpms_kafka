@@ -31,10 +31,7 @@ public class KafkaAdminConfig {
     public NewTopic topicProd() {
         return createTopic("wb_bpm_crm_tasks_prod");
     }
-    @Bean
-    public NewTopic topicStatus() {
-        return createTopic("wb_bpm_crm_tasks_status");
-    }
+
     private NewTopic createTopic(String name) {
         return new NewTopic(name, 3, (short) 1);
     }
