@@ -13,7 +13,13 @@ import java.util.Map;
 public class KafkaAdminConfig {
 
     @Value("${kafka.bootstrap-servers}")
-    private String bootstrapServers;
+    public String bootstrapServers;
+
+    @Value("${kafka.topic.dev}")
+    public String devTopic;
+
+    @Value("${kafka.topic.prod}")
+    public String prodTopic;
 
     @Bean
     public KafkaAdmin kafkaAdmin() {
@@ -24,12 +30,12 @@ public class KafkaAdminConfig {
 
     @Bean
     public NewTopic topicDev() {
-        return createTopic("wb_bpm_crm_tasks_dev");
+        return createTopic(devTopic);
     }
 
     @Bean
     public NewTopic topicProd() {
-        return createTopic("wb_bpm_crm_tasks_prod");
+        return createTopic(prodTopic);
     }
 
     private NewTopic createTopic(String name) {
